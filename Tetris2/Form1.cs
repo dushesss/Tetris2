@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
+
 
 namespace Tetris2
 {
@@ -21,6 +23,8 @@ namespace Tetris2
         public DateTime t1, t2;
         public TimeSpan ts;
         public int count, o = 200;
+        System.Media.SoundPlayer sp2 = new System.Media.SoundPlayer();
+
         public Form1()
         {
             InitializeComponent();
@@ -38,7 +42,13 @@ namespace Tetris2
             timer2.Start();
             
             t1 = DateTime.Now;
-           
+            
+            sp2.SoundLocation = "C:\\Users\\dushesss\\Desktop\\Practice\\Tetris2\\darude-sandstorm.wav";
+            sp2.Load();
+            sp2.Play();
+            
+
+
 
         }
         public void FillField()
@@ -178,9 +188,17 @@ namespace Tetris2
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
+            sp2.Stop();
             this.Hide();
             Form2 form = new Form2();
             form.Show();
+
+        }
+        
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //music = new Microsoft.DirectX.AudioVideoPlayback.Audio(@"C:\Users\dushesss\Downloads\darude-sandstorm.mp3");
+            //music.Play();
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)

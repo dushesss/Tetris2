@@ -21,6 +21,7 @@ namespace Tetris2
         public DateTime t1, t2;
         public TimeSpan ts;
         public int count, o = 110;
+        System.Media.SoundPlayer sp2 = new System.Media.SoundPlayer();
         public Form3()
         {
             InitializeComponent();
@@ -38,7 +39,11 @@ namespace Tetris2
             timer2.Start();
             
             t1 = DateTime.Now;
-           
+
+            sp2.SoundLocation = "C:\\Users\\dushesss\\Desktop\\Practice\\Tetris2\\darude-sandstorm.wav";
+            sp2.Load();
+            sp2.Play();
+
 
         }
         public void FillField()
@@ -166,7 +171,7 @@ namespace Tetris2
 
         private void Form3_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+            sp2.Stop();
             Form2 form = new Form2();
             form.Show();
            
