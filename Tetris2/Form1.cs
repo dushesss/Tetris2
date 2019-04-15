@@ -18,6 +18,7 @@ namespace Tetris2
         public Bitmap bitfield = new Bitmap(k * (width + 1) + 1, k * (height + 3) + 1);
         public Graphics gr;
         public Brush colKirpich;
+        public DateTime t1, t2;
         public Form1()
         {
             InitializeComponent();
@@ -30,6 +31,11 @@ namespace Tetris2
                 field[width - 1, i] = 1;
             }
             SetShape();
+            
+            timer2.Interval = 1000;
+            timer2.Start();
+            
+            t1 = DateTime.Now;
         }
         public void FillField()
         {
@@ -53,6 +59,7 @@ namespace Tetris2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+           
             if (field[8, 3] == 1)
                 Environment.Exit(0);
             for (int i = 0; i < 4; i++)
@@ -112,7 +119,27 @@ namespace Tetris2
                     if (FindMistake())
                         Array.Copy(shapeT, shape, shape.Length);
                     break;
+                case Keys.S:
+                    timer1.Interval = 70;
+                    break;
             }
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch(e.KeyCode)
+            {
+                case Keys.S:
+                    timer1.Interval = 200;
+                    break;
+            }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            t2 = DateTime.Now;
+            TimeSpan ts = t2 - t1;
+            label5.Text = "Время:" + ts.Minutes.ToString() + ":" + ts.Seconds.ToString();
         }
 
         public void SetShape()
