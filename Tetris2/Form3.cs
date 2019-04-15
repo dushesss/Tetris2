@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Tetris2
 {
-    public partial class Form1 : Form
+    public partial class Form3 : Form
     {
         public const int width = 15, height = 25, k = 15;
         public int[,] shape = new int[2, 4];
@@ -19,9 +19,8 @@ namespace Tetris2
         public Graphics gr;
         public Brush colKirpich;
         public DateTime t1, t2;
-        public TimeSpan ts;
-        public int count, o = 200;
-        public Form1()
+        public int count = 0;
+        public Form3()
         {
             InitializeComponent();
             gr = Graphics.FromImage(bitfield);
@@ -38,8 +37,6 @@ namespace Tetris2
             timer2.Start();
             
             t1 = DateTime.Now;
-           
-
         }
         public void FillField()
         {
@@ -48,7 +45,7 @@ namespace Tetris2
                 for (int j = 0; j < height; j++)
                     if (field[i, j] == 1)
                     {
-                        gr.FillRectangle(Brushes.Purple, i * k, j * k, k, k);
+                        gr.FillRectangle(Brushes.Crimson, i * k, j * k, k, k);
                         gr.DrawRectangle(Pens.Black, i * k, j * k, k, k);
                     }
             for (int i = 0; i < 4; i++)
@@ -77,11 +74,6 @@ namespace Tetris2
                         {
                             field[l, k] = field[l, k - 1];
                             count++;
-                            if (count == 2) o = 100;
-                            else if (count == 4) o = 70;
-                            else if (count == 6) o = 40;
-                                timer1.Interval = o;
-                            label6.Text = "Линии: " + count.ToString();
                         }
             }
             if (FindMistake())
@@ -91,13 +83,6 @@ namespace Tetris2
                 SetShape();
             }
             FillField();
-
-            //// for(int i=0;i < ts;i++)
-            
-            //else if (ts.Seconds == 2)
-            //    timer1.Interval -= 30;
-
-
         }
 
         private void Form1_KeyDown_1(object sender, KeyEventArgs e)
@@ -139,7 +124,7 @@ namespace Tetris2
                         Array.Copy(shapeT, shape, shape.Length);
                     break;
                 case Keys.S:
-                    timer1.Interval = 70;
+                    timer1.Interval = 30;
                     break;
             }
         }
@@ -149,18 +134,16 @@ namespace Tetris2
             switch(e.KeyCode)
             {
                 case Keys.S:
-                    timer1.Interval = o;
+                    timer1.Interval = 80;
                     break;
             }
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            
             t2 = DateTime.Now;
-            ts = t2 - t1;
+            TimeSpan ts = t2 - t1;
             label5.Text = "Время:" + ts.Minutes.ToString() + ":" + ts.Seconds.ToString();
-            
         }
 
         public void SetShape()

@@ -8,3 +8,5 @@ C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\obj\Debug\Tetris2.csproj.Core
 C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\obj\Debug\Tetris2.exe
 C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\obj\Debug\Tetris2.pdb
 C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\obj\Debug\Tetris2.csprojAssemblyReference.cache
+C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\obj\Debug\Tetris2.Form2.resources
+C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\obj\Debug\Tetris2.Form3.resources
