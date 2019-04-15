@@ -72,17 +72,28 @@ namespace Tetris2
             {
                 var cross = (from t in Enumerable.Range(0, field.GetLength(0)).Select(j => field[j, i]).ToArray() where t == 1 select t).Count();
                 if (cross == width)
+                {
+                    count++;
+                    label6.Text = "Линии: " + count.ToString();
                     for (int k = i; k > 1; k--)
                         for (int l = 1; l < width - 1; l++)
                         {
                             field[l, k] = field[l, k - 1];
-                            count++;
-                            if (count == 2) o = 100;
-                            else if (count == 4) o = 70;
-                            else if (count == 6) o = 40;
-                                timer1.Interval = o;
-                            label6.Text = "Линии: " + count.ToString();
+
+                            if (count == 5) { o = 150; }
+                            if (count == 10) { o = 140; }
+                            if (count == 15) { o = 130; }
+                            if (count == 20) { o = 120; }
+                            if (count == 25) { o = 110; }
+                            if (count == 30) { o = 100; }
+                            if (count == 35) { o = 90; }
+                            if (count == 40) { o = 75; }
+                            if (count == 45) { o = 60; }
+                            if (count == 50) { o = 50; }
+                            timer1.Interval = o;
+
                         }
+                }
             }
             if (FindMistake())
             {
