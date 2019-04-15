@@ -63,9 +63,19 @@ namespace Tetris2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-           
+
             if (field[8, 3] == 1)
-                Environment.Exit(0);
+            {
+                timer1.Enabled = false;
+                MessageBox.Show(
+                    "Вы проиграли,сочувствуем",
+                    "Упс!=D"
+                    );
+                this.Close();
+                Form2 form = new Form2();
+                //form.Show();
+                //Environment.Exit(0);
+            }
             for (int i = 0; i < 4; i++)
                 shape[0, i]++;
             for (int i = height - 2; i > 2; i--)
@@ -94,6 +104,17 @@ namespace Tetris2
 
                         }
                 }
+            }
+            if (count == 50)
+            {
+                timer1.Enabled = false;
+                MessageBox.Show(
+                    "Вы выиграли, поздравляем",
+                    "Congratulations!"
+                    );
+                this.Close();
+                Form2 form = new Form2();
+                //form.Show();
             }
             if (FindMistake())
             {
@@ -155,12 +176,19 @@ namespace Tetris2
             }
         }
 
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            Form2 form = new Form2();
+            form.Show();
+        }
+
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             switch(e.KeyCode)
             {
                 case Keys.S:
-                    timer1.Interval = o;
+                    timer1.Interval = o-20;
                     break;
             }
         }

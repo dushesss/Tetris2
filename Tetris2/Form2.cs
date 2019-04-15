@@ -21,14 +21,19 @@ namespace Tetris2
         {
             Form1 form = new Form1();
             form.Show();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Form3 form = new Form3();
             form.Show();
+            this.Hide();
         }
 
-
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

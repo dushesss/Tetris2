@@ -19,7 +19,8 @@ namespace Tetris2
         public Graphics gr;
         public Brush colKirpich;
         public DateTime t1, t2;
-        public int count = 0;
+        public TimeSpan ts;
+        public int count, o = 110;
         public Form3()
         {
             InitializeComponent();
@@ -37,6 +38,8 @@ namespace Tetris2
             timer2.Start();
             
             t1 = DateTime.Now;
+           
+
         }
         public void FillField()
         {
@@ -60,21 +63,53 @@ namespace Tetris2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-           
+
             if (field[8, 3] == 1)
-                Environment.Exit(0);
+            {
+                timer1.Enabled = false;
+                MessageBox.Show(
+                    "Вы проиграли,сочувствуем",
+                    "Упс!=D"
+                    );
+                this.Close();
+                Form2 form = new Form2();
+                //form.Show();
+                //Environment.Exit(0);
+            }
             for (int i = 0; i < 4; i++)
                 shape[0, i]++;
             for (int i = height - 2; i > 2; i--)
             {
                 var cross = (from t in Enumerable.Range(0, field.GetLength(0)).Select(j => field[j, i]).ToArray() where t == 1 select t).Count();
                 if (cross == width)
+                {
+                    count++;
+                    label6.Text = "Линии: " + count.ToString();
                     for (int k = i; k > 1; k--)
                         for (int l = 1; l < width - 1; l++)
                         {
                             field[l, k] = field[l, k - 1];
-                            count++;
+
+                            if (count == 2) { o = 100; }
+                            if (count == 4) { o = 75; }
+                            if (count == 6) { o = 60; }
+                            if (count == 8) { o = 55; }
+                           
+                            timer1.Interval = o;
+
                         }
+                }
+            }
+            if (count == 10)
+            {
+                timer1.Enabled = false;
+                MessageBox.Show(
+                    "Вы выиграли, поздравляем",
+                    "Congratulations!"
+                    );
+                //this.Hide();
+                //Form2 form = new Form2();
+                //form.Show();
             }
             if (FindMistake())
             {
@@ -124,9 +159,17 @@ namespace Tetris2
                         Array.Copy(shapeT, shape, shape.Length);
                     break;
                 case Keys.S:
-                    timer1.Interval = 30;
+                    timer1.Interval = 70;
                     break;
             }
+        }
+
+        private void Form3_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+            Form2 form = new Form2();
+            form.Show();
+           
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -134,16 +177,18 @@ namespace Tetris2
             switch(e.KeyCode)
             {
                 case Keys.S:
-                    timer1.Interval = 80;
+                    timer1.Interval = o-20;
                     break;
             }
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
+            
             t2 = DateTime.Now;
-            TimeSpan ts = t2 - t1;
+            ts = t2 - t1;
             label5.Text = "Время:" + ts.Minutes.ToString() + ":" + ts.Seconds.ToString();
+            
         }
 
         public void SetShape()
