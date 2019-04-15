@@ -1,0 +1,10 @@
+C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\bin\Debug\Tetris2.exe.config
+C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\bin\Debug\Tetris2.exe
+C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\bin\Debug\Tetris2.pdb
+C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\obj\Debug\Tetris2.Form1.resources
+C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\obj\Debug\Tetris2.Properties.Resources.resources
+C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\obj\Debug\Tetris2.csproj.GenerateResource.cache
+C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\obj\Debug\Tetris2.csproj.CoreCompileInputs.cache
+C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\obj\Debug\Tetris2.exe
+C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\obj\Debug\Tetris2.pdb
+C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\obj\Debug\Tetris2.csprojAssemblyReference.cache
