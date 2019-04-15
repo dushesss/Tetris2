@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
+
 
 namespace Tetris2
 {
@@ -19,6 +21,10 @@ namespace Tetris2
         public Graphics gr;
         public Brush colKirpich;
         public DateTime t1, t2;
+        public TimeSpan ts;
+        public int count, o = 200;
+        System.Media.SoundPlayer sp2 = new System.Media.SoundPlayer();
+
         public Form1()
         {
             InitializeComponent();
@@ -36,6 +42,14 @@ namespace Tetris2
             timer2.Start();
             
             t1 = DateTime.Now;
+            
+            sp2.SoundLocation = "C:\\Users\\dushesss\\Desktop\\Practice\\Tetris2\\darude-sandstorm.wav";
+            sp2.Load();
+            sp2.Play();
+            
+
+
+
         }
         public void FillField()
         {
@@ -44,7 +58,7 @@ namespace Tetris2
                 for (int j = 0; j < height; j++)
                     if (field[i, j] == 1)
                     {
-                        gr.FillRectangle(Brushes.Green, i * k, j * k, k, k);
+                        gr.FillRectangle(Brushes.Purple, i * k, j * k, k, k);
                         gr.DrawRectangle(Pens.Black, i * k, j * k, k, k);
                     }
             for (int i = 0; i < 4; i++)
@@ -59,18 +73,58 @@ namespace Tetris2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-           
+
             if (field[8, 3] == 1)
-                Environment.Exit(0);
+            {
+                timer1.Enabled = false;
+                MessageBox.Show(
+                    "Вы проиграли,сочувствуем",
+                    "Упс!=D"
+                    );
+                this.Close();
+                Form2 form = new Form2();
+                //form.Show();
+                //Environment.Exit(0);
+            }
             for (int i = 0; i < 4; i++)
                 shape[0, i]++;
             for (int i = height - 2; i > 2; i--)
             {
                 var cross = (from t in Enumerable.Range(0, field.GetLength(0)).Select(j => field[j, i]).ToArray() where t == 1 select t).Count();
                 if (cross == width)
+                {
+                    count++;
+                    label6.Text = "Линии: " + count.ToString();
                     for (int k = i; k > 1; k--)
                         for (int l = 1; l < width - 1; l++)
+                        {
                             field[l, k] = field[l, k - 1];
+
+                            if (count == 5) { o = 150; }
+                            if (count == 10) { o = 140; }
+                            if (count == 15) { o = 130; }
+                            if (count == 20) { o = 120; }
+                            if (count == 25) { o = 110; }
+                            if (count == 30) { o = 100; }
+                            if (count == 35) { o = 90; }
+                            if (count == 40) { o = 75; }
+                            if (count == 45) { o = 60; }
+                            if (count == 50) { o = 50; }
+                            timer1.Interval = o;
+
+                        }
+                }
+            }
+            if (count == 50)
+            {
+                timer1.Enabled = false;
+                MessageBox.Show(
+                    "Вы выиграли, поздравляем",
+                    "Congratulations!"
+                    );
+                this.Close();
+                Form2 form = new Form2();
+                //form.Show();
             }
             if (FindMistake())
             {
@@ -79,6 +133,13 @@ namespace Tetris2
                 SetShape();
             }
             FillField();
+
+            //// for(int i=0;i < ts;i++)
+            
+            //else if (ts.Seconds == 2)
+            //    timer1.Interval -= 30;
+
+
         }
 
         private void Form1_KeyDown_1(object sender, KeyEventArgs e)
@@ -125,21 +186,38 @@ namespace Tetris2
             }
         }
 
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            sp2.Stop();
+            this.Hide();
+            Form2 form = new Form2();
+            form.Show();
+
+        }
+        
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //music = new Microsoft.DirectX.AudioVideoPlayback.Audio(@"C:\Users\dushesss\Downloads\darude-sandstorm.mp3");
+            //music.Play();
+        }
+
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             switch(e.KeyCode)
             {
                 case Keys.S:
-                    timer1.Interval = 200;
+                    timer1.Interval = o-20;
                     break;
             }
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
+            
             t2 = DateTime.Now;
-            TimeSpan ts = t2 - t1;
+            ts = t2 - t1;
             label5.Text = "Время:" + ts.Minutes.ToString() + ":" + ts.Seconds.ToString();
+            
         }
 
         public void SetShape()
