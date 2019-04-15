@@ -42,12 +42,6 @@ namespace Tetris2
             timer2.Start();
             
             t1 = DateTime.Now;
-            
-            sp2.SoundLocation = "C:\\Users\\dushesss\\Desktop\\Practice\\Tetris2\\darude-sandstorm.wav";
-            sp2.Load();
-            sp2.Play();
-            
-
 
 
         }
@@ -195,10 +189,14 @@ namespace Tetris2
 
         }
         
+        
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            //music = new Microsoft.DirectX.AudioVideoPlayback.Audio(@"C:\Users\dushesss\Downloads\darude-sandstorm.mp3");
-            //music.Play();
+            
+            sp2.SoundLocation = @"C:\\Users\\ProGa\\Tetris2\\darude-sandstorm.wav";
+            sp2.PlayLooping();
+
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)

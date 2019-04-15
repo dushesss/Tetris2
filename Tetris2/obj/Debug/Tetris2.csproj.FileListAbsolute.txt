@@ -10,3 +10,17 @@ C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\obj\Debug\Tetris2.pdb
 C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\obj\Debug\Tetris2.csprojAssemblyReference.cache
 C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\obj\Debug\Tetris2.Form2.resources
 C:\Users\dushesss\Desktop\Practice\Tetris2\Tetris2\obj\Debug\Tetris2.Form3.resources
+C:\Users\ProGa\Tetris2\Tetris2\bin\Debug\Tetris2.exe.config
+C:\Users\ProGa\Tetris2\Tetris2\bin\Debug\Tetris2.exe
+C:\Users\ProGa\Tetris2\Tetris2\bin\Debug\Tetris2.pdb
+C:\Users\ProGa\Tetris2\Tetris2\obj\Debug\Tetris2.csprojAssemblyReference.cache
+C:\Users\ProGa\Tetris2\Tetris2\obj\Debug\Tetris2.Form3.resources
+C:\Users\ProGa\Tetris2\Tetris2\obj\Debug\Tetris2.Form1.resources
+C:\Users\ProGa\Tetris2\Tetris2\obj\Debug\Tetris2.Form2.resources
+C:\Users\ProGa\Tetris2\Tetris2\obj\Debug\Tetris2.Properties.Resources.resources
+C:\Users\ProGa\Tetris2\Tetris2\obj\Debug\Tetris2.csproj.GenerateResource.cache
+C:\Users\ProGa\Tetris2\Tetris2\obj\Debug\Tetris2.csproj.CoreCompileInputs.cache
+C:\Users\ProGa\Tetris2\Tetris2\obj\Debug\Tetris2.exe
+C:\Users\ProGa\Tetris2\Tetris2\obj\Debug\Tetris2.pdb
+C:\Users\ProGa\Tetris2\Tetris2\obj\Debug\Interop.WMPLib.dll
+C:\Users\ProGa\Tetris2\Tetris2\obj\Debug\Tetris2.csproj.ResolveComReference.cache

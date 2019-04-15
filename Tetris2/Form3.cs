@@ -40,11 +40,8 @@ namespace Tetris2
             
             t1 = DateTime.Now;
 
-            sp2.SoundLocation = "C:\\Users\\dushesss\\Desktop\\Practice\\Tetris2\\darude-sandstorm.wav";
-            sp2.Load();
+            sp2.SoundLocation = @"C:\\Users\\ProGa\\Tetris2\\hardlevel.wav";
             sp2.Play();
-
-
         }
         public void FillField()
         {
@@ -164,7 +161,7 @@ namespace Tetris2
                         Array.Copy(shapeT, shape, shape.Length);
                     break;
                 case Keys.S:
-                    timer1.Interval = 70;
+                    timer1.Interval = o-20;
                     break;
             }
         }
@@ -182,7 +179,7 @@ namespace Tetris2
             switch(e.KeyCode)
             {
                 case Keys.S:
-                    timer1.Interval = o-20;
+                    timer1.Interval = o;
                     break;
             }
         }
