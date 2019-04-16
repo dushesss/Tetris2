@@ -109,7 +109,7 @@ namespace Tetris2
                         }
                 }
             }
-            if (count == 50)
+            if (count == 2)
             {
                 timer1.Enabled = false;
                 MessageBox.Show(
